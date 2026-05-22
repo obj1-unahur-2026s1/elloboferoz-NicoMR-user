@@ -1,0 +1,33 @@
+import feroz.*
+
+describe "name" {
+test "Simulación de la historia completa y salud del lobo" {
+    // 1. El lobo va corriendo hasta el bosque
+    feroz.hastaUnLugar() // pesoInicial: 10 - 1 = 9
+
+    // 2. En el bosque se encuentra con Caperucita (conversan, no pasa nada)
+
+    // 3. Luego, el lobo corre a la casa de la abuelita
+    feroz.hastaUnLugar() // pesoInicial: 9 - 1 = 8
+
+    // 4. Se come a la abuelita (pesa 50, suma el 10% de 50 = 5)
+    feroz.comeAlgo(abuelita) // pesoInicial: 8 + 5 = 13
+
+    // 5. Mientras tanto, a Caperucita se le cae una manzana de su canasta
+    // (Tenía 6 manzanas, ahora le quedan 5)
+    manzana.cantidad(5) 
+    // El nuevo peso de Cape es: 60 + (5 * 0.2) = 61 unidades
+
+    // 6. El lobo se come a Caperucita con canasta llena y todo
+    // (Caperucita pesa 61, el lobo suma el 10% de 61 = 6.1)
+    feroz.comeAlgo(caperucita) // pesoInicial: 13 + 6.1 = 19.1
+
+    // --- RESPUESTA AL PUNTO 5 (Averiguar la salud en los finales) ---
+
+    // FINAL 1: Llega el cazador y le provoca una crisis
+    feroz.sufreCrisis() // Su peso vuelve a ser el inicial (10)
+    
+    // Verificamos con el assert cómo quedó de salud
+    assert.notThat(feroz.estaSaludable()) // Da FALSE, porque 10 no está entre 20 y 150
+  }
+}

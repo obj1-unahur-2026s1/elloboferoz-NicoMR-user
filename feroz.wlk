@@ -1,29 +1,28 @@
 object feroz {
+  var property salud = 100
+  var property pesoInicial = 10 //peso inicial
 
-  var peso = 10
-  const pesoInicial = 10
+  method estaSaludable() = (pesoInicial >= 20 && pesoInicial <= 150) //devuelve booleano
+  method nuevoPeso(unPeso) { pesoInicial += unPeso }
+  method sufreCrisis() {  pesoInicial = 10}
+  method comeAlgo(comida) { pesoInicial += (comida.peso() * 0.1) }
+  method hastaUnLugar() { pesoInicial -= 1}
+}
 
-  method estaSaludable() {
-    return peso >= 20 && peso <= 150
-  }
+object caperucita {
+  var property pesoCaperusita = 60
+  var property canasta = manzana
 
-  method cambiarPeso(cantidad) {
-    peso += cantidad
-  }
+  method peso() = pesoCaperusita + canasta.pesoTotal() 
+}
 
-  method sufrirCrisis() {
-    peso = pesoInicial
-  }
+object manzana {
+  var property cantidad = 6
+  var property peso = 0.2 
 
-  method comer(alimento) {
-    peso += alimento.peso() * 0.1
-  }
+  method pesoTotal() { return cantidad * peso}
+}
 
-  method correr(lugar) {
-    peso -= 1
-  }
-
-  method peso() {
-    return peso
-  }
+object abuelita {
+  var property peso = 50
 }
